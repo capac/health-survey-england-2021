@@ -27,15 +27,24 @@ for cat, row in zip(weight_list, wb_table1.iter_rows(min_row=24, max_row=26,
                                                      values_only=True)):
     weight_dict[cat] = row
 
-# # stacked bar plot
+# stacked bar plot
 fig, axes = plt.subplots()
 bottom = np.zeros(7)
 for label, weight_per in weight_dict.items():
     p = axes.bar(age_list, weight_per, bottom=bottom,
-                 label=label, alpha=0.9)
+                 label=label, alpha=0.95)
     bottom += weight_per
 
-axes.legend(loc='center right', fontsize=12, bbox_to_anchor=(1.2, 0.5))
+bottom_values = np.ones(7)
+for values in weight_dict.values():
+    for label, value, b_value in zip(age_list, values, bottom_values):
+        axes.annotate('{:g} %'.format(round(value, 0)),
+                      (label, b_value+value/2), fontsize=14,
+                      fontweight='bold', ha='center', va='top')
+    bottom_values += values
+
+axes.legend(loc='lower center', fontsize=12, fancybox=True,
+            bbox_to_anchor=(0.5, -0.13), ncols=3)
 axes.set_xlabel('Age Range')
 axes.set_ylabel('Percentage (%)')
 axes.set_title('Percentage of neither obese or overweight, overweight and obese in England (2021)')
