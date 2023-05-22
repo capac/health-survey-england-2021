@@ -32,7 +32,7 @@ fig, axes = plt.subplots()
 bottom = np.zeros(7)
 for label, weight_per in weight_dict.items():
     p = axes.bar(age_list, weight_per, bottom=bottom,
-                 label=label, alpha=0.95)
+                 label=label, alpha=0.95, width=0.7)
     bottom += weight_per
 
 bottom_values = np.ones(7)
