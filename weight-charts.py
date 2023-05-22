@@ -44,9 +44,18 @@ for values in weight_dict.values():
     bottom_values += values
 
 axes.legend(loc='lower center', fontsize=12, fancybox=True,
-            bbox_to_anchor=(0.5, -0.13), ncols=3)
+            bbox_to_anchor=(0.5, -0.125), ncols=3)
 axes.set_xlabel('Age Range')
 axes.set_ylabel('Percentage (%)')
 axes.set_title('Percentage of neither obese or overweight, overweight and obese in England (2021)')
+
+# Set source text
+axes.text(x=.08, y=-0.05,
+          s='''Source: "Health Survey for England 2021 report '''
+          '''on Overweight and obesity in adults" via NHS Digital''',
+          transform=fig.transFigure,
+          ha='left',
+          fontsize=12,
+          alpha=.7)
 
 plt.savefig(work_dir / 'plots/weight_charts_2021.png')
