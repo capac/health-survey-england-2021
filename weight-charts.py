@@ -49,13 +49,11 @@ axes.set_xlabel('Age Range')
 axes.set_ylabel('Percentage (%)')
 axes.set_title('Percentage of neither obese or overweight, overweight and obese in England (2021)')
 
-# Set source text
-axes.text(x=.08, y=-0.05,
+# set source text
+axes.text(x=0.08, y=-0.05,
           s='''Source: "Health Survey for England 2021 report '''
           '''on Overweight and obesity in adults" via NHS Digital''',
           transform=fig.transFigure,
-          ha='left',
-          fontsize=12,
-          alpha=.7)
+          ha='left', fontsize=12, alpha=0.7)
 
 plt.savefig(work_dir / 'plots/weight_charts_2021.png')
